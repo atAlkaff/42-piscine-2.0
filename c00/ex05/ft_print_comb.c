@@ -6,65 +6,55 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:40:31 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/16 23:55:20 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/17 00:30:29 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#define BUFMAX 1764
+#define BUFMAX 600
 
-static char	*store_number(int n, int *digits, char *it)
+static char	*store_number(int *digits, char *it)
 {
-	int	i;
-
-	i = 0;
-	while (i < n)
-		*it++ = digits[i++] + '0';
-	*it++ = ',';
-	*it++ = ' ';
-	return (it);
+	it[0] = digits[0] + '0';
+	it[1] = digits[1] + '0';
+	it[2] = digits[2] + '0';
+	it[3] = ',';
+	it[4] = ' ';
+	return (it + 5);
 }
 
-static void	get_next_comb(int n, int *digits, int i)
+static void	get_next_comb(int *digits, int i)
 {
 	i++;
-	while (i < n)
+	while (i < 3)
 	{
 		digits[i] = digits[i - 1] + 1;
 		i++;
 	}
 }
 
-static void	ft_print_combn(int n)
+void	ft_print_comb(void)
 {
 	char	buffer[BUFMAX];
 	char	*it;
-	int		digits[10];
+	int		digits[3];
 	int		i;
 
 	it = buffer;
-	i = 0;
-	while (i < n)
-	{
-		digits[i] = i;
-		i++;
-	}
+	digits[0] = 0;
+	digits[1] = 1;
+	digits[2] = 2;
 	while (1)
 	{
-		it = store_number(n, digits, it);
-		i = n - 1;
-		while (i >= 0 && digits[i] == 10 - n + i)
+		it = store_number(digits, it);
+		i = 2;
+		while (i >= 0 && digits[i] == 7 + i)
 			i--;
 		if (i < 0)
 			break ;
 		digits[i]++;
-		get_next_comb(n, digits, i);
+		get_next_comb(digits, i);
 	}
 	write(STDOUT_FILENO, buffer, it - buffer - 2);
-}
-
-void	ft_print_comb(void)
-{
-	ft_print_combn(3);
 }
