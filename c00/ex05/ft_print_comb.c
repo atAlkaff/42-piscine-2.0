@@ -6,48 +6,65 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:40:31 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/16 14:32:04 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/16 23:55:20 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#define BUFFER_SIZE 600
+#define BUFMAX 1764
 
-static char	*load_number(char *buffer, unsigned int digits[3])
+static char	*store_number(int n, int *digits, char *it)
 {
-	buffer[0] = digits[0] + '0';
-	buffer[1] = digits[1] + '0';
-	buffer[2] = digits[2] + '0';
-	buffer[3] = ',';
-	buffer[4] = ' ';
-	return (buffer + 5);
+	int	i;
+
+	i = 0;
+	while (i < n)
+		*it++ = digits[i++] + '0';
+	*it++ = ',';
+	*it++ = ' ';
+	return (it);
+}
+
+static void	get_next_comb(int n, int *digits, int i)
+{
+	i++;
+	while (i < n)
+	{
+		digits[i] = digits[i - 1] + 1;
+		i++;
+	}
+}
+
+static void	ft_print_combn(int n)
+{
+	char	buffer[BUFMAX];
+	char	*it;
+	int		digits[10];
+	int		i;
+
+	it = buffer;
+	i = 0;
+	while (i < n)
+	{
+		digits[i] = i;
+		i++;
+	}
+	while (1)
+	{
+		it = store_number(n, digits, it);
+		i = n - 1;
+		while (i >= 0 && digits[i] == 10 - n + i)
+			i--;
+		if (i < 0)
+			break ;
+		digits[i]++;
+		get_next_comb(n, digits, i);
+	}
+	write(STDOUT_FILENO, buffer, it - buffer - 2);
 }
 
 void	ft_print_comb(void)
 {
-	char			buffer[BUFFER_SIZE];
-	char			*iterator;
-	unsigned int	digits[3];
-	unsigned int	number;
-
-	number = 12;
-	iterator = buffer;
-	while (number <= 789)
-	{
-		digits[0] = number / 100;
-		digits[1] = (number % 100) / 10;
-		digits[2] = number % 10;
-		iterator = load_number(iterator, digits);
-		if (digits[2] == 9)
-		{
-			if (digits[1] == 8)
-				number += 11 * digits[0] + 34;
-			else
-				number += digits[1] + 3;
-		}
-		else
-			number++;
-	}
-	write(STDOUT_FILENO, buffer, BUFFER_SIZE - 2);
+	ft_print_combn(3);
 }
