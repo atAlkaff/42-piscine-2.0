@@ -6,7 +6,7 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 23:40:31 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/16 00:35:29 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/16 14:32:04 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define BUFFER_SIZE 600
 
-char	*load_number(char *buffer, unsigned int digits[3])
+static char	*load_number(char *buffer, unsigned int digits[3])
 {
 	buffer[0] = digits[0] + '0';
 	buffer[1] = digits[1] + '0';
