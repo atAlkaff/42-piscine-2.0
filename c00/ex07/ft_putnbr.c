@@ -6,7 +6,7 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:14:46 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/17 14:35:50 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/17 14:40:21 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 void	ft_putnbr(int nb)
 {
-	char buffer[BUFMAX];
-	int i;
-	int is_negative;
+	char	buffer[BUFMAX];
+	int		i;
+	int		is_negative;
 
 	i = 19;
 	buffer[i] = '0';
