@@ -6,7 +6,7 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:06:56 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/20 21:05:13 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/20 21:10:36 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static void	generate_alnums(unsigned char *alnum)
 {
 	unsigned char	i;
 
+	i = 0;
+	while (i < 256)
+		alnum[i++] = 0;
 	i = '0';
 	while (i <= '9')
 		alnum[i++] = FT_DIGIT;
@@ -34,7 +37,7 @@ static void	generate_alnums(unsigned char *alnum)
 
 char	*ft_strcapitalize(char *str)
 {
-	static unsigned char	alnum[256] = {0};
+	static unsigned char	alnum[256];
 	int						i;
 	int						prev;
 	int						curr;
