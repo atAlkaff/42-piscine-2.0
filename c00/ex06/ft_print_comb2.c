@@ -6,7 +6,7 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 00:37:07 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/16 14:48:21 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/20 19:44:33 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define BUFFER_SIZE 34650
 
-static char *load_numbers(char *buffer, int a, int b)
+static char	*load_numbers(char *buffer, int a, int b)
 {
 	buffer[0] = a / 10 + '0';
 	buffer[1] = a % 10 + '0';
@@ -26,7 +26,7 @@ static char *load_numbers(char *buffer, int a, int b)
 	return (buffer + 7);
 }
 
-void ft_print_comb2(void)
+void	ft_print_comb2(void)
 {
 	char			buffer[BUFFER_SIZE];
 	char			*iterator;
