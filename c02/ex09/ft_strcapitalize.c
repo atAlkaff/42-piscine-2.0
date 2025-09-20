@@ -6,7 +6,7 @@
 /*   By: aalkaff <aalkaff@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:06:56 by aalkaff           #+#    #+#             */
-/*   Updated: 2025/09/20 21:10:36 by aalkaff          ###   ########.fr       */
+/*   Updated: 2025/09/20 21:11:05 by aalkaff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #define FT_TOLOWER	5
 #define FT_TOUPPER	4
 
-static void	generate_alnums(unsigned char *alnum)
+static void	generate_alnums_table(unsigned char *alnum)
 {
 	unsigned char	i;
 
@@ -43,7 +43,7 @@ char	*ft_strcapitalize(char *str)
 	int						curr;
 
 	if (!alnum['A'])
-		generate_alnums(alnum);
+		generate_alnums_table(alnum);
 	i = 0;
 	prev = 0;
 	while (str[i])
